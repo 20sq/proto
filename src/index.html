@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="20sq-proto">
+  <head>
+
+    <title ng-bind="pageTitle"></title>
+
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+  </head>
+
+  <body>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+
+  </body>
+
+</html>
