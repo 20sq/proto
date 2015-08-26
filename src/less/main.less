@@ -10,7 +10,7 @@
  * project should be imported as the rest are just wasting space.
  */
 
-// @import '../../vendor/bootstrap/less/bootstrap.less';
+@import '../../vendor/bootstrap/less/bootstrap.less';
 
 
 /**
@@ -20,10 +20,16 @@
 
 @import 'variables.less';
 
+// for ui-bootstrap
+.nav, .pagination, .carousel, .panel-title
+  a {
+    cursor: pointer;
+  }
+
 
 /**
  * Now that all app-wide styles have been applied, we can load the styles for
- * all the submodules and components we are using. 
+ * all the submodules and components we are using.
  *
  * TODO: In a later version of this boilerplate, I'd like to automate this.
  * TRY: change the grunt task to compile multiple LESS files then concatenate the resulting CSS files

@@ -1,6 +1,12 @@
 {
   "name": "20sq-proto",
   "version": "0.0.1",
-  "devDependencies": {},
+  "devDependencies": {
+    "angular": "~1.4",
+    "angular-bootstrap": "~0.13.3",
+    "angular-mocks": "~1.4",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5"
+  },
   "dependencies": {}
 }

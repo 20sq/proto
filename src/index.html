@@ -7,9 +7,13 @@
     <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
     <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 
+    <meta name="viewport" content="initial-scale=1" />
+
   </head>
 
   <body>
+
+    <div class="container" ui-view></div>
 
     <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script><% }); %>
