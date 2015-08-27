@@ -13,6 +13,10 @@ $ sudo npm -g install grunt-cli karma bower
 $ npm install
 $ bower install
 $ grunt watch
+$ open a new terminal session
+$ cd into the project
+$ sudo npm -g install http-server
+$ http-server build
 ```
 
-Finally, open `file:///path/to/project/build/index.html` in your browser.
+Finally, open `localhost:8080` in your browser.
