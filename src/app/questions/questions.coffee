@@ -12,7 +12,7 @@ angular.module('20sq-proto.questions', [])
   return {
     A: [
       'What is your name?'
-      'Is the person male or female?'
+      'Is the person a female?'
       'Is she same age with you?'
       'Are you working together?'
       'Did you went to the same school?'
@@ -23,7 +23,7 @@ angular.module('20sq-proto.questions', [])
     ]
     B: [
       'What is your name?'
-      'Is the person male or female?'
+      'Is the person a male?'
       'Is he same age with you?'
       'Are you working together?'
       'Did you went to the same school?'

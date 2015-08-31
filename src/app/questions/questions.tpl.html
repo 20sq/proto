@@ -4,24 +4,30 @@
     <div class="col-sm-8 col-sm-offset-2">
 
       <form ng-submit="next()">
-        <h3>{{num}}. {{question}}</h3>
+        <div class="jumbotron text-center">
+          <h3>Question {{num}}.<br><br><em>{{question}}</em></h3>
+        </div>
 
         <div ng-switch="num === 1">
 
           <div ng-switch-when="true">
-            <input type="text" class="form-control" ng-model="answer">
-            <button type="submit" class="btn btn-default btn-lg">Next</button>
+            <div class="form-group">
+              <input type="text" class="form-control" ng-model="answer">
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-default">Next</button>
+            </div>
           </div>
 
           <div ng-switch-default>
             <div class="btn-group btn-group-justified">
               <div class="btn-group">
-                <button type="submit" class="btn btn-default btn-lg">
+                <button type="submit" class="btn btn-default">
                   <span class="glyphicon glyphicon-ok-circle"></span> Yes
                 </button>
               </div>
               <div class="btn-group">
-                <button type="submit" class="btn btn-default btn-lg">
+                <button type="submit" class="btn btn-default">
                   <span class="glyphicon glyphicon-remove-circle"></span> No
                 </button>
               </div>
