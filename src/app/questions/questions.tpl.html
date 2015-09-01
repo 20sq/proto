@@ -1,9 +1,9 @@
-<div ng-switch="answerSet">
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2" ng-switch="!!answerSet">
 
-  <div ng-switch-default class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-
+    <div ng-switch-default>
       <form ng-submit="next()">
+
         <div class="jumbotron text-center">
           <h3>Question {{num}}.<br><br><em>{{question}}</em></h3>
         </div>
@@ -37,17 +37,30 @@
         </div>
 
       </form>
-
     </div>
-  </div>
 
-  <div ng-switch-when="A">
-    Alright on to the next
-    <a ui-sref="q({set: 'b'})">Go</a>
-  </div>
+    <div ng-switch-when="true">
+      <div class="jumbotron text-center">
+        <h3>I guess the person is<br><br><em>{{answerSet.relationship}}</em></h3>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <p class="text-center">
+            <img ng-src="{{answerSet.photo}}">
+          </p>
+          <hr>
+          <p class="text-justify">
+            You and <strong>{{answerSet.name}}</strong> went to {{answerSet.attended}}.
+            {{answerSet.gender === 'f' ? ' She' : ' He'}} is currently at {{answerSet.location}}.
+            <span ng-if="answerSet.trip"> You went to {{answerSet.trip}}.</span>
+          </p>
+        </div>
+      </div>
+      <div ng-switch="setName">
+        <a ng-switch-default class="btn btn-primary" ui-sref="q({set: 'b'})">Try again</a>
+        <a ng-switch-when="B" class="btn btn-primary" ui-sref="f">There's more</a>
+      </div>
+    </div>
 
-  <div ng-switch-when="B">
-    Yee ha!
   </div>
-
 </div>
