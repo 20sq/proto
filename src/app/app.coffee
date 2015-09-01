@@ -8,11 +8,7 @@ angular.module('20sq-proto', [
   '20sq-proto.finale'
 ])
 
-.config ($locationProvider, $urlRouterProvider) ->
-  $locationProvider.html5Mode
-    enabled: true
-    requireBase: false
-  $locationProvider.hashPrefix '#'
+.config ($urlRouterProvider) ->
   $urlRouterProvider.otherwise '/'
 
 .constant 'appConst',
