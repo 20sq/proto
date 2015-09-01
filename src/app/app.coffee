@@ -5,6 +5,7 @@ angular.module('20sq-proto', [
   'templates-common'
   '20sq-proto.home'
   '20sq-proto.questions'
+  '20sq-proto.finale'
 ])
 
 .config ($locationProvider, $urlRouterProvider) ->
