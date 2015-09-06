@@ -4,11 +4,15 @@
     <div ng-switch-default>
       <form ng-submit="next()">
 
-        <div class="jumbotron text-center">
-          <h3><em>{{question}}</em></h3>
+        <div class="jumbotron text-center" ng-switch="loading">
+          <h3 ng-switch-when="true">
+            <span class="glyphicon glyphicon-refresh spinning"></span>
+            <div><small><em>Please hold on</em></small></div>
+          </h3>
+          <h3 ng-switch-default class="fade-in"><em>{{question}}</em></h3>
         </div>
 
-        <div class="btn-group btn-group-justified">
+        <div ng-show="!loading" class="btn-group btn-group-justified">
           <div class="btn-group">
             <button type="submit" class="btn btn-default" ng-disabled="answer">
               <span class="glyphicon glyphicon-ok-circle"></span> Yes
@@ -21,8 +25,10 @@
           </div>
         </div>
 
-        <div class="text-center">
-          <h3><em>{{answer}}</em></h3>
+        <br><br>
+
+        <div ng-show="!loading" class="text-center">
+          <h3 class="bounce-forever"><em>{{answer}}</em></h3>
         </div>
 
       </form>

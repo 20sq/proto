@@ -47,13 +47,19 @@ angular.module('20sq-proto.finale', [])
     $scope.answer = $scope.setting.a
 
     $timeout ->
-      return propose() if $scope.num >= TheSettings.length
+      $scope.loading = true
 
-      $scope.setting = TheSettings[$scope.num]
-      $scope.question = $scope.setting.q
-      $scope.answer = null
-      $scope.num++
-    , 2000
+      $timeout ->
+        $scope.loading = false
+
+        return propose() if $scope.num >= TheSettings.length
+
+        $scope.setting = TheSettings[$scope.num]
+        $scope.question = $scope.setting.q
+        $scope.answer = null
+        $scope.num++
+      , 500
+    , 4500
 
   propose = ->
     $scope.step = 'propose'
