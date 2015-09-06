@@ -18,7 +18,7 @@ angular.module('20sq-proto.questions', [])
       'Did you went to the same school?'
       'Have you met her this year?'
       'Did you went to a trip together this year?'
-      'Do you live in the same country?'
+      'Do you live in the same country now?'
       'Is she working in the tech industry?'
     ]
     B: [
@@ -69,6 +69,8 @@ angular.module('20sq-proto.questions', [])
   $scope.question = $scope.questions[0]
   $scope.num = 1
   $scope.loading = false
+  $scope.loadingAnswer = false
+  $scope.promptContinue = false
 
   $scope.userAnswers = []
   $scope.answer = null
@@ -91,4 +93,13 @@ angular.module('20sq-proto.questions', [])
 
     $timeout ->
       $scope.answerSet = Answers[$scope.setName]
-    , 1000
+      $scope.loadingAnswer = true
+
+      $timeout ->
+        $scope.loadingAnswer = false
+
+        $timeout ->
+          $scope.promptContinue = true
+        , 3000
+      , 2000
+    , 500

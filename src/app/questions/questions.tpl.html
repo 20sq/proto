@@ -9,7 +9,7 @@
             <span class="glyphicon glyphicon-refresh spinning"></span>
             <div><small><em>Please hold on</em></small></div>
           </h3>
-          <h3 ng-switch-default>Question {{num}}.<br><br><em>{{question}}</em></h3>
+          <h3 ng-switch-default class="fade-in">Question {{num}}.<br><br><em>{{question}}</em></h3>
         </div>
 
         <div ng-show="!loading" ng-switch="num === 1">
@@ -45,9 +45,14 @@
 
     <div ng-switch-when="true">
       <div class="jumbotron text-center">
-        <h3>I guess the person is<br><br><em>{{answerSet.relationship}}</em></h3>
+        <h3 ng-switch="loadingAnswer">
+          I guess the person is...
+          <br><br>
+          <span ng-switch-when="true" class="glyphicon glyphicon-refresh spinning"></span>
+          <em class="bounce" ng-switch-default>{{answerSet.relationship}}</em>
+        </h3>
       </div>
-      <div class="panel panel-default">
+      <div class="panel panel-default fade-in" ng-show="!loadingAnswer">
         <div class="panel-body">
           <p class="text-center">
             <img ng-src="{{answerSet.photo}}">
@@ -60,7 +65,7 @@
           </p>
         </div>
       </div>
-      <div class="text-center" ng-switch="setName">
+      <div class="text-center" ng-switch="setName" ng-show="!loadingAnswer" ng-class="{'bounce-forever': promptContinue}">
         <a ng-switch-default class="btn btn-primary" ui-sref="q({set: 'b'})">Try again</a>
         <a ng-switch-when="B" class="btn btn-primary" ui-sref="f">There's more</a>
       </div>
