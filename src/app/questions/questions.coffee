@@ -23,7 +23,7 @@ angular.module('20sq-proto.questions', [])
     ]
     B: [
       'What is your name?'
-      'Is the person a male?'
+      'Is the person a female?'
       'Is he same age with you?'
       'Are you working together?'
       'Did you went to the same school?'
@@ -61,12 +61,14 @@ angular.module('20sq-proto.questions', [])
       trip: 'Bandung this year'
   }
 
-.controller 'QuestionsController', ($scope, $stateParams, Questions, Answers) ->
+.controller 'QuestionsController',
+($scope, $stateParams, Questions, Answers, $timeout) ->
   $scope.setName =
     if $stateParams.set then $stateParams.set.toUpperCase() else 'A'
   $scope.questions = Questions[$scope.setName]
   $scope.question = $scope.questions[0]
   $scope.num = 1
+  $scope.loading = false
 
   $scope.userAnswers = []
   $scope.answer = null
@@ -75,9 +77,18 @@ angular.module('20sq-proto.questions', [])
   $scope.next = ->
     return displayAnswer() if $scope.num >= $scope.questions.length
 
-    $scope.userAnswers.push $scope.answer
-    $scope.question = $scope.questions[$scope.num]
-    $scope.num++
+    $scope.loading = true
+
+    $timeout ->
+      $scope.userAnswers.push $scope.answer
+      $scope.question = $scope.questions[$scope.num]
+      $scope.num++
+      $scope.loading = false
+    , 400
 
   displayAnswer = ->
-    $scope.answerSet = Answers[$scope.setName]
+    $scope.loading = true
+
+    $timeout ->
+      $scope.answerSet = Answers[$scope.setName]
+    , 1000
