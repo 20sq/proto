@@ -62,7 +62,11 @@ angular.module('20sq-proto.questions', [])
   }
 
 .controller 'QuestionsController',
-($scope, $stateParams, Questions, Answers, $timeout) ->
+($scope, $stateParams, Questions, Answers, $timeout,
+    $location, $anchorScroll) ->
+  # otherwise scroll to bottom will not work after a refresh with #bottom
+  $location.hash ''
+
   $scope.setName =
     if $stateParams.set then $stateParams.set.toUpperCase() else 'A'
   $scope.questions = Questions[$scope.setName]
@@ -97,9 +101,14 @@ angular.module('20sq-proto.questions', [])
 
       $timeout ->
         $scope.loadingAnswer = false
+        scrollToBottom()
 
         $timeout ->
           $scope.promptContinue = true
-        , 3000
+        , 3500
       , 2000
     , 500
+
+  scrollToBottom = ->
+    $location.hash 'bottom'
+    $anchorScroll()
