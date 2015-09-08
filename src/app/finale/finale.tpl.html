@@ -28,7 +28,7 @@
         <br><br>
 
         <div ng-show="!loading" class="text-center">
-          <h3 class="bounce-forever"><em>{{answer}}</em></h3>
+          <h3 ng-class="{'pulse-forever': !loading}"><em>{{answer}}</em></h3>
         </div>
 
       </form>

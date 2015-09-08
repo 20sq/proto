@@ -20,7 +20,7 @@ angular.module('20sq-proto.finale', [])
     }
     {
       q: 'Will you live as \'us\' with him?'
-      a: 'Yes.'
+      a: 'Absolutely.'
     }
   ]
 
@@ -59,7 +59,7 @@ angular.module('20sq-proto.finale', [])
         $scope.answer = null
         $scope.num++
       , 500
-    , 4500
+    , 4000
 
   propose = ->
     $scope.step = 'propose'
