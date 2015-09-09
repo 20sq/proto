@@ -12,15 +12,15 @@ angular.module('20sq-proto.finale', [])
   return [
     {
       q: 'Do you feel comfortable being with him?'
-      a: 'He felt so too.'
+      a: 'He feels comfortable.'
     }
     {
       q: 'Do you think he can take care of you?'
-      a: 'He thought he could.'
+      a: 'He promise you his best.'
     }
     {
       q: 'Will you live as \'us\' with him?'
-      a: 'Absolutely.'
+      a: 'Absolutely, yes.'
     }
   ]
 
@@ -63,12 +63,15 @@ angular.module('20sq-proto.finale', [])
 
   propose = ->
     $scope.step = 'propose'
+    $scope.loadingProposal = true
     $scope.proposal = []
 
     ix = 0
 
     $scope.proposal.push TheProposal[ix]
 
-    $interval ->
+    $interval( ->
       $scope.proposal.push TheProposal[++ix]
-    , 1000, TheProposal.length
+    , 1500, TheProposal.length
+    ).then ->
+      $scope.loadingProposal = false

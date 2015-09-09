@@ -35,7 +35,19 @@
     </div>
 
     <div ng-switch-when="propose" class="text-center">
-      <p ng-repeat="phrase in proposal"><em>{{phrase}}</em></p>
+      <h3 ng-repeat="phrase in proposal" class="fade-in"><em>{{phrase}}</em></h3>
+      <div ng-show="!loadingProposal" class="btn-group btn-group-justified fade-in">
+        <div class="btn-group">
+          <button type="submit" class="btn btn-default">
+            <span class="glyphicon glyphicon-ok-circle"></span> Yes
+          </button>
+        </div>
+        <div class="btn-group">
+          <button type="submit" class="btn btn-default">
+            <span class="glyphicon glyphicon-ok-circle"></span> Yes
+          </button>
+        </div>
+      </div>
     </div>
 
   </div>
