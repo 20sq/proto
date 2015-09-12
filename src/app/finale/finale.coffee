@@ -25,53 +25,29 @@ angular.module('20sq-proto.finale', [])
     'The moments where you two almost parted?'
     'How he stands by your side?'
     'That you were always staying by his side?'
-    'That it will probably take years to recount your memories...'
-  ]
-
-.factory 'TheProposal', ->
-  return [
-    'Will you...'
-    'allow him to'
-    'walk with you'
-    'hand in hand'
-    'through the wind and rain'
-    'till the end of time?'
+    '''
+    It'd take years to recount your memories...
+    And more to make new ones.
+    '''
   ]
 
 .controller 'FinaleController',
-($scope, TheSettings, TheProposal, $timeout, $interval) ->
-  $scope.step = 'settings'
-
+($scope, TheSettings, $timeout, $state) ->
+  $scope.header = 'Do you remember...'
   $scope.setting = null
-  $scope.ix = -1
 
+  ix = -1
   lastIx = TheSettings.length - 1
 
   $scope.next = ->
+    return $state.go('p') if ix >= lastIx
+
     $scope.loading = true
 
     $timeout ->
       $scope.loading = false
-
-      return propose() if $scope.ix >= lastIx
-
-      $scope.ix++
-      $scope.setting = TheSettings[$scope.ix]
+      $scope.setting = TheSettings[++ix]
+      $scope.header = 'Do you agree that' if ix is lastIx
     , 1000
-
-  propose = ->
-    $scope.step = 'propose'
-    $scope.loadingProposal = true
-    $scope.proposal = []
-
-    ix = 0
-
-    $scope.proposal.push TheProposal[ix]
-
-    $interval( ->
-      $scope.proposal.push TheProposal[++ix]
-    , 1500, TheProposal.length
-    ).then ->
-      $scope.loadingProposal = false
 
   $scope.next()

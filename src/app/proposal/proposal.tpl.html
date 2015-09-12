@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2 text-center">
+
+    <h3 ng-repeat="phrase in proposal" class="fade-in">
+      <em>{{phrase}}</em>
+    </h3>
+
+    <div ng-show="!loading" class="btn-group btn-group-justified fade-in">
+      <div class="btn-group">
+        <a ui-sref="yes" class="btn btn-default">
+          <span class="glyphicon glyphicon-ok-circle"></span> Yes
+        </a>
+      </div>
+      <div class="btn-group">
+        <a ui-sref="yes" class="btn btn-default">
+          <span class="glyphicon glyphicon-ok-circle"></span> Yes
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>

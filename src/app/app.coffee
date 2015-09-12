@@ -6,6 +6,7 @@ angular.module('20sq-proto', [
   '20sq-proto.home'
   '20sq-proto.questions'
   '20sq-proto.finale'
+  '20sq-proto.proposal'
   '20sq-proto.yes'
 ])
 
