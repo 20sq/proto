@@ -10,18 +10,22 @@ angular.module('20sq-proto.finale', [])
 
 .factory 'TheSettings', ->
   return [
-    {
-      q: 'Do you feel comfortable being with him?'
-      a: 'He feels comfortable.'
-    }
-    {
-      q: 'Do you think he can take care of you?'
-      a: 'He promise you his best.'
-    }
-    {
-      q: 'Will you live as \'us\' with him?'
-      a: 'Absolutely, yes.'
-    }
+    'How you two met?'
+    'The first activity you did together?'
+    'The caption of your first picture?'
+    'The times when you go to college together?'
+    'The first song you taught him?'
+    'The first song he sang to you?'
+    'The first time you two got really close?'
+    'The first time you kissed?'
+    'The first time you hold hands?'
+    'The first time he took care of you?'
+    'Your first trip together?'
+    'The first time you quarrel?'
+    'The moments where you two almost parted?'
+    'How he stands by your side?'
+    'That you were always staying by his side?'
+    'That it will probably take years to recount your memories...'
   ]
 
 .factory 'TheProposal', ->
@@ -38,28 +42,22 @@ angular.module('20sq-proto.finale', [])
 ($scope, TheSettings, TheProposal, $timeout, $interval) ->
   $scope.step = 'settings'
 
-  $scope.setting = TheSettings[0]
-  $scope.question = $scope.setting.q
-  $scope.answer = null
-  $scope.num = 1
+  $scope.setting = null
+  $scope.ix = -1
+
+  lastIx = TheSettings.length - 1
 
   $scope.next = ->
-    $scope.answer = $scope.setting.a
+    $scope.loading = true
 
     $timeout ->
-      $scope.loading = true
+      $scope.loading = false
 
-      $timeout ->
-        $scope.loading = false
+      return propose() if $scope.ix >= lastIx
 
-        return propose() if $scope.num >= TheSettings.length
-
-        $scope.setting = TheSettings[$scope.num]
-        $scope.question = $scope.setting.q
-        $scope.answer = null
-        $scope.num++
-      , 500
-    , 4000
+      $scope.ix++
+      $scope.setting = TheSettings[$scope.ix]
+    , 1000
 
   propose = ->
     $scope.step = 'propose'
@@ -75,3 +73,5 @@ angular.module('20sq-proto.finale', [])
     , 1500, TheProposal.length
     ).then ->
       $scope.loadingProposal = false
+
+  $scope.next()

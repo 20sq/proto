@@ -65,7 +65,7 @@
           </p>
         </div>
       </div>
-      <div class="text-center" ng-switch="setName" ng-show="!loadingAnswer" ng-class="{'bounce-forever': promptContinue}">
+      <div class="text-center" ng-switch="setName" ng-show="!loadingAnswer" ng-class="{'pulse-forever': promptContinue}">
         <a ng-switch-default class="btn btn-primary" ui-sref="q({set: 'b'})">Try again</a>
         <a ng-switch-when="B" class="btn btn-primary" ui-sref="f">There's more</a>
       </div>

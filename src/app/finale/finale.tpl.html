@@ -4,31 +4,27 @@
     <div ng-switch-default>
       <form ng-submit="next()">
 
-        <div class="jumbotron text-center" ng-switch="loading">
-          <h3 ng-switch-when="true">
-            <span class="glyphicon glyphicon-refresh spinning"></span>
-            <div><small><em>Please hold on</em></small></div>
+        <div class="jumbotron text-center">
+          <p>
+            <em>Do you remember...</em>
+          </p>
+          <h3 ng-switch="loading">
+            <span ng-switch-when="true" class="glyphicon glyphicon-refresh spinning"></span>
+            <em ng-switch-default class="pulse">{{setting}}</em>
           </h3>
-          <h3 ng-switch-default class="fade-in"><em>{{question}}</em></h3>
         </div>
 
-        <div ng-show="!loading" class="btn-group btn-group-justified">
+        <div ng-show="!loading" class="btn-group btn-group-justified fade-in">
           <div class="btn-group">
-            <button type="submit" class="btn btn-default" ng-disabled="answer">
+            <button type="submit" class="btn btn-default">
               <span class="glyphicon glyphicon-ok-circle"></span> Yes
             </button>
           </div>
           <div class="btn-group">
-            <button type="submit" class="btn btn-default" ng-disabled="answer">
+            <button type="submit" class="btn btn-default">
               <span class="glyphicon glyphicon-remove-circle"></span> No
             </button>
           </div>
-        </div>
-
-        <br><br>
-
-        <div ng-show="!loading" class="text-center">
-          <h3 ng-class="{'pulse-forever': !loading}"><em>{{answer}}</em></h3>
         </div>
 
       </form>
